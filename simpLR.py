@@ -3,33 +3,33 @@ from cost import cost
 import numpy as np
 
 # data = np.loadtxt('ex1data2.txt', dtype='int', delimiter=',');
-# data = np.array([[1, 1],
-#                 [2, 2],
-#                 [3, 3]])
+data = np.array([[1, 1],
+                [2, 2],
+                [3, 3]])
 
-data = np.array([[1, 0.5],
-                [2, 1],
-                [3, 1.5]])
+# data = np.array([[1, 0.5],
+#                 [2, 1],
+#                 [3, 1.5]])
 
 X = data[::,0]
 Y = data[::,-1]
+print(X)
+m = X.size
 
-m = X.size;
-
-# theta = np.random.rand(2)
-theta = np.array([0.62224641, 0.05215265])
+theta = np.random.rand(2)
+theta = np.array([0, 1])
 print("Original Theta: ", theta)
-alpha = 0.2
+alpha = 0.01
 j = 0
 while True:
     j = j + 1
     print ("Epoch %d:" % (j))
     # Training Epoch
-    hypotheses = hypothesis(m, theta, X)
+    hypotheses = hypothesis(m, 2, theta, X)
     print("hypotheses: ", hypotheses)
     c = cost(m, hypotheses, Y)
     print("Cost: ", c)
-    if(c <= 0.00000000000001):
+    if(c <= 0.01):
         print("Theta0 %f Theta1: %f" % (theta[0], theta[1]))
         break
 
